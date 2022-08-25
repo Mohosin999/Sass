@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin-top: 15px;
+}
+
+body {
+  background-color: #262626;
+  color: #fff;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
+}
+.main .main__para-one, .main .main__para-two {
+  font-weight: 300;
+}
+.main .main__para-one:hover, .main .main__para-two:hover {
+  color: #40862e;
+}
+.main .main__para-two:hover {
+  color: pink;
+}
+
+/*# sourceMappingURL=style.css.map */

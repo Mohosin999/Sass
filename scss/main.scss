@@ -1,0 +1,66 @@
+// import file
+@import "./reset";
+@import "./variables";
+
+// function
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
+
+//mixin
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin theme($light-theme: true) {
+  @if $light-theme {
+    background-color: lighten($primary-color, 100%);
+    color: darken($text-color, 100%);
+  }
+}
+
+// map
+$font-weights: (
+  "regular": 300,
+  "medium": 500,
+  "bold": 700,
+);
+
+// apply
+body {
+  background-color: $primary-color;
+  color: $text-color;
+}
+
+.light {
+  @include theme(false);
+}
+
+// nesting
+.main {
+  @include flexCenter(column);
+
+  width: 60%;
+  margin: 0 auto;
+
+  // #{&} means it's child of .main and .main not need to rewrite
+  #{&}__para-one {
+    font-weight: weight(regular);
+
+    // to add hover this paragraph
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+
+  #{&}__para-two {
+    @extend .main__para-one;
+
+    &:hover {
+      color: pink;
+    }
+  }
+}
